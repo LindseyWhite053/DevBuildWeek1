@@ -1,16 +1,36 @@
-﻿bool keepGoing = false;
-do
+﻿
+bool keepGoing = true;
 
+while (keepGoing == true) 
 {
     
-//prompt the user to enter an integer. Assuming the user enters valid data
-Console.Write("Enter a number to see it squared and cubed: ");
-int number = Convert.ToInt32(Console.ReadLine());
+    //prompt the user to enter an integer. Assuming the user enters valid data
+    Console.Write("Enter a number to see it squared and cubed: ");
+    int number = Convert.ToInt32(Console.ReadLine());
+
+    // Validate the number is neither 0 nor a negative number 
+    while (number <= 0 )
+    {
+
+        Console.Write("Invalid number. Enter a positive number to see it squared and cubed: ");
+        number = Convert.ToInt32(Console.ReadLine());
+    
+    }
+
+    //Limit the user input to the maximum number whose cube will fit in an int or less 
+    while (number > 1290)
+    {
+        Console.Write("Number may not exceed 1290. Please enter a new number: ");
+        number = Convert.ToInt32(Console.ReadLine());
+
+    }
 
 
-//display a table of squares and cubes from 1 to the value entered 
-Console.WriteLine("{0,-7} {1, -7} {2, -7}", "Number", "Squared", "Cubed");
-Console.WriteLine("{0,-7} {1, -7} {2, -7}", "-------", "-------", "-------");
+    Console.WriteLine();
+
+    //display a table of squares and cubes from 1 to the value entered 
+    Console.WriteLine("{0,-7} {1, -7} {2, -7}", "Number", "Squared", "Cubed");
+    Console.WriteLine("{0,-7} {1, -7} {2, -7}", "-------", "-------", "-------");
 
 
     for (int i = 1; i <= number; i++)
@@ -19,10 +39,10 @@ Console.WriteLine("{0,-7} {1, -7} {2, -7}", "-------", "-------", "-------");
     }
 
 
-
-    //Ask the user if they would line to go again. Enter y or yes to go again , n or no to quit. 
+    //Ask the user if they would like to go again. Enter y or yes to go again , n or no to quit. 
     bool valid = false;
-    do
+    
+    while (valid == false)
     {
         Console.Write("Would you like to continue to a new number? (y/n) ");
         string answer = Console.ReadLine().ToLower();
@@ -38,18 +58,9 @@ Console.WriteLine("{0,-7} {1, -7} {2, -7}", "-------", "-------", "-------");
         {
             valid = true;
             keepGoing = false;
-            Console.WriteLine("Goodbye");
+            Console.WriteLine("Goodbye!");
             break;
         }
 
-    } while (valid == false);
-
-
-} while (keepGoing == true);
-
-
-
-
-//Extra: Provide validation by rejecting 0 or negative numbers as user input; keep prompting the user until they enter a valid number.
-
-//Extra: Find out the maximum number whose cube will fit in an int, and limit the user input to that number or less
+    }
+} 

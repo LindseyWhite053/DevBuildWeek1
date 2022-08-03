@@ -7,6 +7,7 @@ do
 Console.Write("Please enter a number between 1 and 100: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
+
 //evaluate if the integer is even or odd 
 bool isEven;
 
